@@ -1,0 +1,28 @@
+import os
+import shutil
+from docx2pdf import convert
+
+# Convert Test Evidence Word Documents to PDF
+
+input_folder = r"C:\\Users\\cvdwesthuize\\Documents\\Dev\ConvertPdf\\input"
+archive_folder = r"C:\\Users\\cvdwesthuize\\Documents\\Dev\ConvertPdf\\archive"
+
+def converttopdf():
+    convert(input_folder)
+
+# Archive docx files that were converted
+def move_to_folder():
+    print("Before moving of the files")
+    print(os.listdir(archive_folder))
+
+    file_names = os.listdir(input_folder)
+    for file_names in file_names:
+        shutil.move(os.path.join(input_folder, file_names), archive_folder)
+    
+
+    print("After moving the files")
+    print(os.listdir(archive_folder))
+
+if __name__ == '__main__':
+    converttopdf()
+    move_to_folder()
